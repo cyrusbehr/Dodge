@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameViewController.h"
+#import "GameScene.h"
+@import Foundation;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+
+
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    BOOL gameWasRunning;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic) BOOL gameWasRunning;
+
 
 
 @end
