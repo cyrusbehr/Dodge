@@ -704,6 +704,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [mainLayer addChild:hero];
    
     
+    
     finger = [SKSpriteNode spriteNodeWithImageNamed:@"finger"];
     finger.position = CGPointMake(self.frame.size.width*0.5+150, self.frame.size.height*0.5-150);
     finger.xScale = 0.3;
@@ -1612,7 +1613,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 - (void) didCollideWithMonster{
     collideBool = FALSE;
     CGPoint deadPos = hero.position;
-    //NSLog(@"hit");
+    NSLog(@"hit");
     [hero removeFromParent];
     [mainTimer invalidate];
     [gameTimer invalidate];
