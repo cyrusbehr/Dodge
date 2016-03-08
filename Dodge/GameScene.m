@@ -823,6 +823,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     int num = [self getRanNum:(int)[enemyList count]];
     NSString *name = [enemyList objectAtIndex:num];
+    NSLog(name);
     enemy = [SKSpriteNode spriteNodeWithImageNamed:name];
     enemy.physicsBody = [SKPhysicsBody bodyWithTexture:enemy.texture size:(enemy.texture.size)];
     enemy.physicsBody.dynamic = YES;
