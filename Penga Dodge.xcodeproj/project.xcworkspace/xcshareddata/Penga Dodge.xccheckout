@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DB7B0F79-DABF-4791-9E28-25C546695566</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Penga Dodge</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D80EABEB362E88509CD657FED11E0BEEA8CBD21A</key>
+		<string>https://github.com/cyrusbehr/Dodge.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Penga Dodge.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D80EABEB362E88509CD657FED11E0BEEA8CBD21A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cyrusbehr/Dodge.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D80EABEB362E88509CD657FED11E0BEEA8CBD21A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D80EABEB362E88509CD657FED11E0BEEA8CBD21A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Dodge</string>
+		</dict>
+	</array>
+</dict>
+</plist>
