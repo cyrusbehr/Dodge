@@ -616,6 +616,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     //background initilization
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sampleBackground"];
+    background.zPosition = -1.0;
     background.position = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height*0.5);
     background.xScale =((self.frame.size.width / background.size.width));
     if ((int)[[UIScreen mainScreen] bounds].size.width == 480){
@@ -690,7 +691,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     //testing
     
-    characterName = @"penguin@2x.png";
+    characterName = @"penguin";
     hero = [SKSpriteNode spriteNodeWithImageNamed:characterName];
     hero.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
     hero.physicsBody = [SKPhysicsBody bodyWithTexture:hero.texture size:hero.texture.size];
@@ -710,7 +711,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     finger.xScale = 0.3;
     finger.yScale = 0.3;
     [mainLayer addChild:finger];
-    NSLog(@"did load finger");
+    
     
     angelPenguin = [SKSpriteNode spriteNodeWithImageNamed:@"aaPenguin@2x"];
     [mainLayer addChild:angelPenguin];
@@ -823,7 +824,6 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     int num = [self getRanNum:(int)[enemyList count]];
     NSString *name = [enemyList objectAtIndex:num];
-    NSLog(name); //TODO remove this
     enemy = [SKSpriteNode spriteNodeWithImageNamed:name];
     enemy.physicsBody = [SKPhysicsBody bodyWithTexture:enemy.texture size:(enemy.texture.size)];
     enemy.physicsBody.dynamic = YES;
@@ -886,7 +886,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 
 
 -(IBAction)startGame:(id)sender{
-    NSLog(@"start game");
+    //NSLog(@"start game");
     [hero removeAllActions];
     hero.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
     [finger removeAllActions];
@@ -1083,7 +1083,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     bestScore.textColor = [UIColor whiteColor];
     
     //change this to 400
-    if(score<400){
+    if(score<1){
         isSausage = TRUE;
         hero.texture = [SKTexture textureWithImageNamed:@"theSaus"];
         hero.size = hero.texture.size;
@@ -1337,7 +1337,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
  
     NSString *explosionPath2 = [[NSBundle mainBundle] pathForResource:@"FeatherAnimation1" ofType:@"sks"];
-    NSLog(@"added feathers");
+    //NSLog(@"added feathers");
     SKEmitterNode *explosion2 = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath2];
     explosion2.position = position;
     [mainLayer addChild:explosion2];
@@ -1614,7 +1614,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 - (void) didCollideWithMonster{
     collideBool = FALSE;
     CGPoint deadPos = hero.position;
-    NSLog(@"hit");
+    //NSLog(@"hit");
     [hero removeFromParent];
     [mainTimer invalidate];
     [gameTimer invalidate];
@@ -1624,7 +1624,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     if(isSausage==FALSE){
         
        
-        if([characterName isEqualToString:@"penguin@2x.png"]){
+        if([characterName isEqualToString:@"penguin"]){
            [self addFeathers:deadPos];
         }else if([characterName isEqualToString:@"pig"]){
             [self addBacon:deadPos];
@@ -2146,7 +2146,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 }
 
 -(void)selectPenguin{
-    characterName = @"penguin@2x.png";
+    characterName = @"penguin";
     characterSelected.text = [NSString stringWithFormat:@"%@ selected", characterName];
     [characterSelected sizeToFit];
     [characterSelected setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.67)];
@@ -2356,7 +2356,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
        
         
         
-        if([characterName isEqualToString:@"penguin@2x.png"]){
+        if([characterName isEqualToString:@"penguin"]){
             [self addFeathers:deadPos];
         }else if([characterName isEqualToString:@"pig"]){
             [self addBacon:deadPos];
