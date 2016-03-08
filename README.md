@@ -1,5 +1,5 @@
 # Dodge
 
-Penga Dodge was a programming project to introduce me to the basics of IOS Development and programming in Objective - C.
+Penga Dodge was a project undertaken to learn the basics of IOS Game development and to learn objective C.
 
-Please feel free to contribute and improve the game
+If you feel the game can be improved in any way, please feel free to contribute to the project.
