@@ -690,7 +690,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     //testing
     
-    characterName = @"penguin";
+    characterName = @"penguin@2x.png";
     hero = [SKSpriteNode spriteNodeWithImageNamed:characterName];
     hero.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height*0.5);
     hero.physicsBody = [SKPhysicsBody bodyWithTexture:hero.texture size:hero.texture.size];
@@ -823,7 +823,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     int num = [self getRanNum:(int)[enemyList count]];
     NSString *name = [enemyList objectAtIndex:num];
-    NSLog(name);
+    NSLog(name); //TODO remove this
     enemy = [SKSpriteNode spriteNodeWithImageNamed:name];
     enemy.physicsBody = [SKPhysicsBody bodyWithTexture:enemy.texture size:(enemy.texture.size)];
     enemy.physicsBody.dynamic = YES;
@@ -1624,7 +1624,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     if(isSausage==FALSE){
         
        
-        if([characterName isEqualToString:@"penguin"]){
+        if([characterName isEqualToString:@"penguin@2x.png"]){
            [self addFeathers:deadPos];
         }else if([characterName isEqualToString:@"pig"]){
             [self addBacon:deadPos];
@@ -2146,7 +2146,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 }
 
 -(void)selectPenguin{
-    characterName = @"penguin";
+    characterName = @"penguin@2x.png";
     characterSelected.text = [NSString stringWithFormat:@"%@ selected", characterName];
     [characterSelected sizeToFit];
     [characterSelected setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.67)];
@@ -2356,7 +2356,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
        
         
         
-        if([characterName isEqualToString:@"penguin"]){
+        if([characterName isEqualToString:@"penguin@2x.png"]){
             [self addFeathers:deadPos];
         }else if([characterName isEqualToString:@"pig"]){
             [self addBacon:deadPos];
