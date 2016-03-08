@@ -7,6 +7,9 @@
 //
 
 
+//TODO: create start powerup which has a SKemiiter generating starts and makes player invinsible
+//and plays music and allows player to kill enemies by touching them and rewards points for each killed enemy
+
 #import "GameScene.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
