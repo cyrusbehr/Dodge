@@ -32,7 +32,7 @@ double initialdelayTime = 0.9;//
 double delayTimeMin = 0.2;
 double delayTime = 0.9;//start at 0.9
 int speedTime = 70;//70 start
-double timeConstant = 0.0045;//Absolute min time for travel (increase to slow down)
+double timeConstant = 0.0045;//Absolute min time for travel (increase to slow down)(0.0045)
 int rotMax = 100;
 int maxRot = 300;
 int speedTimeMax  = 20;
@@ -1610,7 +1610,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 
 
 -(void)tick{
-    clockTime ++;
+    clockTime +=1;
 }//tick-----------------------------------------------------------------------------------------------------------
 
 
