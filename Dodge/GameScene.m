@@ -10,7 +10,7 @@
 //TODO: create start powerup which has a SKemiiter generating starts and makes player invinsible
 //and plays music and allows player to kill enemies by touching them and rewards points for each killed enemy
 
-//TODO: change wiener score to 200 or 100 and instructions page and the text that appears
+//TODO: change sausage insturctions to 200 points
 
 //TODO: make fish worth more
 
@@ -647,7 +647,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
    
     //tauntLabel
     tauntLabel = [[UILabel alloc]init];
-    tauntLabel.text = [NSString stringWithFormat:@"Score above 400 to get your %@ back!", characterName];
+    tauntLabel.text = [NSString stringWithFormat:@"Score above 200 to get your %@ back!", characterName];
     tauntLabel.textColor = [UIColor yellowColor];
     tauntLabel.font = [UIFont systemFontOfSize:20];
     [tauntLabel sizeToFit];
@@ -1083,14 +1083,14 @@ static inline CGVector degreesToVector(CGFloat degrees){
     }
     }
    // [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil]; //Sends message to viewcontroller to show ad.
-    tauntLabel.text = [NSString stringWithFormat:@"Score above 400 to get your %@ back next round!", characterName];
+    tauntLabel.text = [NSString stringWithFormat:@"Score above 200 to get your %@ back next round!", characterName];
     [tauntLabel sizeToFit];
     [tauntLabel setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.3)];
     isPaused = FALSE;
     bestScore.textColor = [UIColor whiteColor];
     
-    //change this to 400
-    if(score<1){
+    //change this to 200
+    if(score<200){
         isSausage = TRUE;
         hero.texture = [SKTexture textureWithImageNamed:@"theSaus"];
         hero.size = hero.texture.size;
