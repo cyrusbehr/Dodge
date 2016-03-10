@@ -10,9 +10,8 @@
 //TODO: create start powerup which has a SKemiiter generating starts and makes player invinsible
 //and plays music and allows player to kill enemies by touching them and rewards points for each killed enemy
 
-//TODO: change sausage insturctions to 200 points
+//TODO: change sausage insturctions to 200 points and fish score to 175
 
-//TODO: make fish worth more
 
 #import "GameScene.h"
 #import <UIKit/UIKit.h>
@@ -604,7 +603,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     plus100Button = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width*0.5+32, self.view.frame.size.height*0.03-5, 200, 50)];
     [plus100Button setBackgroundColor:[UIColor clearColor]];
-    [plus100Button setTitle:@"+125" forState:UIControlStateNormal];
+    [plus100Button setTitle:@"+175" forState:UIControlStateNormal];
     [plus100Button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     plus100Button.titleLabel.font = [UIFont systemFontOfSize:25];
     [self.view addSubview:plus100Button];
@@ -1797,7 +1796,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [fishBone runAction:fadeOut];
     
     [self addExplosion:fish.position];
-    score+=125;
+    score+=175;
     
     if(score<1000){
         plus100Button.center = CGPointMake(self.view.frame.size.width*0.5+118, self.view.frame.size.height*0.03+18);
