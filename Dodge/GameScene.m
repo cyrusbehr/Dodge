@@ -10,6 +10,10 @@
 //TODO: create start powerup which has a SKemiiter generating starts and makes player invinsible
 //and plays music and allows player to kill enemies by touching them and rewards points for each killed enemy
 
+//TODO: change wiener score to 200 or 100 and instructions page and the text that appears
+
+//TODO: make fish worth more
+
 #import "GameScene.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
@@ -32,7 +36,7 @@ double initialdelayTime = 0.9;//
 double delayTimeMin = 0.2;
 double delayTime = 0.9;//start at 0.9
 int speedTime = 70;//70 start
-double timeConstant = 0.0045;//Absolute min time for travel (increase to slow down)(0.0045)
+double timeConstant = 0.0035;//Absolute min time for travel (increase to slow down)(0.0045)
 int rotMax = 100;
 int maxRot = 300;
 int speedTimeMax  = 20;
