@@ -142,6 +142,7 @@ BOOL canGetFirstLife = TRUE;
     NSTimer *fishDelayTimer;
     UIButton *plus100Button;
     NSTimer *plus100ButtonFadeTimer;
+    SKSpriteNode *star;
     SKSpriteNode *powerUp;
     SKAction *pulseFade;
     UILabel *gameTitleLabel;
