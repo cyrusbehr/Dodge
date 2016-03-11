@@ -10,6 +10,9 @@
 //TODO: create start powerup which has a SKemiiter generating starts and makes player invinsible
 //and plays music and allows player to kill enemies by touching them and rewards points for each killed enemy
 
+//TODO: Make game harder!
+
+
 #import "GameScene.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
@@ -28,11 +31,11 @@ static const uint32_t noCategory =      0X1 <<4;
 int dx;
 int dy;
 int clockTime;
-double initialdelayTime = 0.9;//
+double initialdelayTime = 0.7;//
 double delayTimeMin = 0.2;
-double delayTime = 0.9;//start at 0.9
+double delayTime = 0.7;//start at 0.9
 int speedTime = 70;//70 start
-double timeConstant = 0.0045;//Absolute min time for travel (increase to slow down)(0.0045)
+double timeConstant = 0.0035;//Absolute min time for travel (increase to slow down)(0.0045)
 int rotMax = 100;
 int maxRot = 300;
 int speedTimeMax  = 20;
@@ -275,7 +278,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     isSausage = FALSE;
     
-   NSLog(@"scene moved to view");
+   //NSLog(@"scene moved to view");
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"pauseGame" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"gameOver" object:nil];
@@ -600,7 +603,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     plus100Button = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width*0.5+32, self.view.frame.size.height*0.03-5, 200, 50)];
     [plus100Button setBackgroundColor:[UIColor clearColor]];
-    [plus100Button setTitle:@"+125" forState:UIControlStateNormal];
+    [plus100Button setTitle:@"+175" forState:UIControlStateNormal];
     [plus100Button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     plus100Button.titleLabel.font = [UIFont systemFontOfSize:25];
     [self.view addSubview:plus100Button];
@@ -643,7 +646,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
    
     //tauntLabel
     tauntLabel = [[UILabel alloc]init];
-    tauntLabel.text = [NSString stringWithFormat:@"Score above 400 to get your %@ back!", characterName];
+    tauntLabel.text = [NSString stringWithFormat:@"Score above 200 to get your %@ back!", characterName];
     tauntLabel.textColor = [UIColor yellowColor];
     tauntLabel.font = [UIFont systemFontOfSize:20];
     [tauntLabel sizeToFit];
@@ -1079,14 +1082,14 @@ static inline CGVector degreesToVector(CGFloat degrees){
     }
     }
    // [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil]; //Sends message to viewcontroller to show ad.
-    tauntLabel.text = [NSString stringWithFormat:@"Score above 400 to get your %@ back next round!", characterName];
+    tauntLabel.text = [NSString stringWithFormat:@"Score above 200 to get your %@ back next round!", characterName];
     [tauntLabel sizeToFit];
     [tauntLabel setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.3)];
     isPaused = FALSE;
     bestScore.textColor = [UIColor whiteColor];
     
-    //change this to 400
-    if(score<1){
+    //change this to 200
+    if(score<200){
         isSausage = TRUE;
         hero.texture = [SKTexture textureWithImageNamed:@"theSaus"];
         hero.size = hero.texture.size;
@@ -1793,7 +1796,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [fishBone runAction:fadeOut];
     
     [self addExplosion:fish.position];
-    score+=125;
+    score+=175;
     
     if(score<1000){
         plus100Button.center = CGPointMake(self.view.frame.size.width*0.5+118, self.view.frame.size.height*0.03+18);
