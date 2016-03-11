@@ -10,7 +10,7 @@
 //TODO: create start powerup which has a SKemiiter generating starts and makes player invinsible
 //and plays music and allows player to kill enemies by touching them and rewards points for each killed enemy
 
-//TODO: change sausage insturctions to 200 points and fish score to 175
+//TODO: Make game harder!
 
 
 #import "GameScene.h"
@@ -31,9 +31,9 @@ static const uint32_t noCategory =      0X1 <<4;
 int dx;
 int dy;
 int clockTime;
-double initialdelayTime = 0.9;//
+double initialdelayTime = 0.7;//
 double delayTimeMin = 0.2;
-double delayTime = 0.9;//start at 0.9
+double delayTime = 0.7;//start at 0.9
 int speedTime = 70;//70 start
 double timeConstant = 0.0035;//Absolute min time for travel (increase to slow down)(0.0045)
 int rotMax = 100;
@@ -278,7 +278,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     isSausage = FALSE;
     
-   NSLog(@"scene moved to view");
+   //NSLog(@"scene moved to view");
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"pauseGame" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"gameOver" object:nil];
