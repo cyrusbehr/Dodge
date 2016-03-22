@@ -96,9 +96,9 @@ BOOL canGetFirstLife = TRUE;
     AVAudioPlayer *elephantSound;
     AVAudioPlayer *popSound;
     AVAudioPlayer *backgroundMusicGentle;
-     AVAudioPlayer *backgroundMusicIntense;
+    AVAudioPlayer *backgroundMusicIntense;
     AVAudioPlayer *explosionSound;
-     AVAudioPlayer *splatSound;
+    AVAudioPlayer *splatSound;
     AVAudioPlayer *poofSound;
     NSTimer *powerUpdelayTimer;
     NSTimer *powerUpBoolTimer;
@@ -168,7 +168,7 @@ BOOL canGetFirstLife = TRUE;
     NSTimer *updateCollideBoolTimer;
     AVAudioPlayer *woodSound;
     AVAudioPlayer *leaveSound;
- }
+}
 
 
 
@@ -181,25 +181,25 @@ static inline CGVector degreesToVector(CGFloat degrees){
     return vector;
     
 }
-    static inline CGVector radiansToVector(CGFloat radians){
-        //use this method for converting from degrees to vector form
-        CGVector vector;
-        vector.dx = cosf(radians);
-        vector.dy = sinf(radians);
-        return vector;
-    }
+static inline CGVector radiansToVector(CGFloat radians){
+    //use this method for converting from degrees to vector form
+    CGVector vector;
+    vector.dx = cosf(radians);
+    vector.dy = sinf(radians);
+    return vector;
+}
 
 
 -(void)didMoveToView:(SKView *)view {
-  
+    
     //sound initialization
     
     
-
+    
     NSString *path = [NSString stringWithFormat:@"%@/poof.mp3", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl = [NSURL fileURLWithPath:path];
     poofSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
-   poofSound.volume = 1.2;
+    poofSound.volume = 1.2;
     
     NSString *path2 = [NSString stringWithFormat:@"%@/splat.mp3", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl2 = [NSURL fileURLWithPath:path2];
@@ -232,7 +232,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     NSURL *soundUrl10 = [NSURL fileURLWithPath:path10];
     pigSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl10 error:nil];
     [pigSound setVolume:1.2];
-
+    
     
     NSString *path11 = [NSString stringWithFormat:@"%@/sheepSound.mp3", [[NSBundle mainBundle] resourcePath]];
     NSURL *soundUrl11 = [NSURL fileURLWithPath:path11];
@@ -279,18 +279,18 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     isSausage = FALSE;
     
-   //NSLog(@"scene moved to view");
+    //NSLog(@"scene moved to view");
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"pauseGame" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"gameOver" object:nil];
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"pauseMusic" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"pauseMusic" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"playMusic" object:nil];
     //sound button
     soundButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width*0.03, self.view.frame.size.height*0.03, 50, 40)];
     
     [soundButton setAlpha:0.8];
     [soundButton setBackgroundImage:[UIImage imageNamed:@"musicNoteFix@2x"]
-                     forState:UIControlStateNormal];
+                           forState:UIControlStateNormal];
     [soundButton setBackgroundColor:[UIColor clearColor]];
     [soundButton addTarget:self action:@selector(toggleSound) forControlEvents:UIControlEventTouchUpInside];
     
@@ -333,7 +333,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [menuBut setTitle:@"Help" forState:UIControlStateNormal];
     [menuBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     menuBut.titleLabel.font = [UIFont systemFontOfSize:25];
-     [menuBut addTarget:self action:@selector(helpPage) forControlEvents:UIControlEventTouchUpInside];
+    [menuBut addTarget:self action:@selector(helpPage) forControlEvents:UIControlEventTouchUpInside];
     [menuBut setExclusiveTouch:YES];
     removeAddsButton = [[UIButton alloc] init];
     [removeAddsButton setBackgroundImage:[UIImage imageNamed:@"organe"] forState:UIControlStateNormal];
@@ -512,11 +512,11 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [hippoButton setCenter:CGPointMake(self.view.frame.size.width*0.85714, self.view.frame.size.height*0.5)];
     [hippoButton setAlpha:0];
     hippoButton.enabled = FALSE;
-
+    
     characterSelected = [[UILabel alloc]init];
     characterSelected.textColor = [UIColor whiteColor];
     characterSelected.font = [UIFont systemFontOfSize:25];
-     characterSelected.text = [NSString stringWithFormat:@"%@ selected", characterName];
+    characterSelected.text = [NSString stringWithFormat:@"%@ selected", characterName];
     [characterSelected sizeToFit];
     [characterSelected setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.67)];
     [characterSelected setAlpha:0];
@@ -528,7 +528,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [characterTitle sizeToFit];
     [characterTitle setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.28)];
     [characterTitle setAlpha:0];
-
+    
     [self.view addSubview:pauseScreen];
     [self.view addSubview:menuBut ];
     [self.view addSubview:restartBut ];
@@ -559,7 +559,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [restartBut setAlpha:0];
     [menuBut setAlpha:0];
     [pause setAlpha:0];
-   
+    
     //initial physics
     clockTime = 0;
     self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -644,7 +644,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [start addTarget:self action:@selector(startGame:) forControlEvents:UIControlEventTouchUpInside];
     start.titleLabel.font = [UIFont systemFontOfSize:30];
     [self.view addSubview:start];
-   
+    
     //tauntLabel
     tauntLabel = [[UILabel alloc]init];
     tauntLabel.text = [NSString stringWithFormat:@"Score above 200 to get your %@ back!", characterName];
@@ -658,23 +658,23 @@ static inline CGVector degreesToVector(CGFloat degrees){
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     if(appDelegate.gameWasRunning==FALSE){
-   
-    //mainTimerLabel & bestScore Label
-    mainTimerLabel = [[UILabel alloc]init];
-    mainTimerLabel.text = [NSString stringWithFormat:@"Score: %d",score];
-    mainTimerLabel.textColor = [UIColor whiteColor];
-    mainTimerLabel.font = [UIFont systemFontOfSize:30];
-    [mainTimerLabel sizeToFit];
-    [mainTimerLabel setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.08)];
-    
-    //Flashing start game button animation
-    theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
-    theAnimation.duration=1.0;
-    theAnimation.repeatCount=HUGE_VALF;
-    theAnimation.autoreverses=YES;
-    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
-    theAnimation.toValue=[NSNumber numberWithFloat:0.1];
-    [start.layer addAnimation:theAnimation forKey:@"animateOpacity"];
+        
+        //mainTimerLabel & bestScore Label
+        mainTimerLabel = [[UILabel alloc]init];
+        mainTimerLabel.text = [NSString stringWithFormat:@"Score: %d",score];
+        mainTimerLabel.textColor = [UIColor whiteColor];
+        mainTimerLabel.font = [UIFont systemFontOfSize:30];
+        [mainTimerLabel sizeToFit];
+        [mainTimerLabel setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.08)];
+        
+        //Flashing start game button animation
+        theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
+        theAnimation.duration=1.0;
+        theAnimation.repeatCount=HUGE_VALF;
+        theAnimation.autoreverses=YES;
+        theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+        theAnimation.toValue=[NSNumber numberWithFloat:0.1];
+        [start.layer addAnimation:theAnimation forKey:@"animateOpacity"];
     }
     
     
@@ -710,7 +710,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     hero.physicsBody.collisionBitMask = 0;
     hero.physicsBody.usesPreciseCollisionDetection = YES;
     [mainLayer addChild:hero];
-   
+    
     
     
     finger = [SKSpriteNode spriteNodeWithImageNamed:@"finger"];
@@ -726,10 +726,10 @@ static inline CGVector degreesToVector(CGFloat degrees){
     //angelPenguin.yScale = 0.25;
     angelPenguin.alpha = 0;
     
-
-   
+    
+    
     //fish node
-  
+    
     fish = [SKSpriteNode spriteNodeWithImageNamed:@"oFIsh"];
     fish.physicsBody = [SKPhysicsBody bodyWithTexture:fish.texture size:fish.texture.size];
     fish.physicsBody.dynamic=YES;
@@ -739,7 +739,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     fish.physicsBody.contactTestBitMask = heroCategory;
     fish.physicsBody.collisionBitMask = 0;
     fish.physicsBody.usesPreciseCollisionDetection = YES;
- 
+    
     //fishBone and blood splatter
     fishBone = [SKSpriteNode spriteNodeWithImageNamed:@"Bonefish"];
     fadeOut = [SKAction fadeOutWithDuration:3];
@@ -755,7 +755,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     powerUp.physicsBody.contactTestBitMask = heroCategory;
     powerUp.physicsBody.collisionBitMask = 0;
     powerUp.physicsBody.usesPreciseCollisionDetection = YES;
-
+    
     
     //title label
     
@@ -767,7 +767,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [gameTitleLabel setShadowOffset:CGSizeMake(2, 2)];
     [gameTitleLabel sizeToFit];
     [gameTitleLabel setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.center.y*0.5)];
-
+    
     [self.view addSubview:gameTitleLabel];
     
     [self.view addSubview:helpScreenImage];
@@ -781,14 +781,14 @@ static inline CGVector degreesToVector(CGFloat degrees){
                                                     ]];
     SKAction *repeat = [SKAction repeatActionForever:instructionAnimation];
     [hero runAction:repeat];
-
+    
     SKAction *fingerAction = [SKAction sequence:@[   [SKAction moveTo:CGPointMake(self.frame.size.width*0.5+150, self.frame.size.height*0.5-150) duration:0],[SKAction fadeAlphaTo:1 duration:0.5],
-                                                    [SKAction moveTo:CGPointMake(self.frame.size.width*0.25+150, self.frame.size.height*0.6-150) duration:3],
-                                                    [SKAction waitForDuration:0.5], [SKAction fadeAlphaTo:0 duration:(0.5)]
-                                                    ]];
+                                                     [SKAction moveTo:CGPointMake(self.frame.size.width*0.25+150, self.frame.size.height*0.6-150) duration:3],
+                                                     [SKAction waitForDuration:0.5], [SKAction fadeAlphaTo:0 duration:(0.5)]
+                                                     ]];
     SKAction *repeat2 = [SKAction repeatActionForever:fingerAction];
     [finger runAction:repeat2];
-
+    
     
     
 }//didMoveToView-----------------------------------------------------------------------------------------------------------
@@ -810,16 +810,16 @@ static inline CGVector degreesToVector(CGFloat degrees){
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-   
+    
     for (UITouch *touch in touches) {
         if(mainLayer.speed>0){
             CGPoint location = [touch locationInNode:self];
             dx=hero.position.x-location.x;
             dy=hero.position.y-location.y;
-      
+            
+        }
     }
-    }
-    }//touchesBegan-----------------------------------------------------------------------------------------------------------
+}//touchesBegan-----------------------------------------------------------------------------------------------------------
 
 -(int)getRanNum: (int) boundary{
     
@@ -847,47 +847,47 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     //deals with the placement of enemies
     if(sideNum<3){
-            enemy.position = CGPointMake([self getRanNum:(self.frame.size.width)], (self.frame.size.height)+20);
-            directionDeg = [self getRanNum:180]+180;
-        
-      
+        enemy.position = CGPointMake([self getRanNum:(self.frame.size.width)], (self.frame.size.height)+20);
+        directionDeg = [self getRanNum:180]+180;
         
         
-        }else if(sideNum<6){
-            enemy.position = CGPointMake([self getRanNum:self.frame.size.width], -10);
-            directionDeg = [self getRanNum:180];
-            
-            
-        }else if(sideNum==6){
-            enemy.position = CGPointMake(self.frame.size.width+15, [self getRanNum:self.frame.size.height]);
-            directionDeg = [self getRanNum:180]+90;
-            
-        }else if (sideNum ==7){
-            enemy.position = CGPointMake(-15, [self getRanNum:self.frame.size.height]);
-            directionDeg = [self getRanNum:180]+270;
-        }else if(sideNum ==8){
-            enemy.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height+10);
-            directionDeg = [self getRanNum:180]+180;
         
-         }else{
-            enemy.position = CGPointMake(self.frame.size.width*0.5, -10);
-            directionDeg = (70+[self getRanNum:40]);
-
-        }
+        
+    }else if(sideNum<6){
+        enemy.position = CGPointMake([self getRanNum:self.frame.size.width], -10);
+        directionDeg = [self getRanNum:180];
+        
+        
+    }else if(sideNum==6){
+        enemy.position = CGPointMake(self.frame.size.width+15, [self getRanNum:self.frame.size.height]);
+        directionDeg = [self getRanNum:180]+90;
+        
+    }else if (sideNum ==7){
+        enemy.position = CGPointMake(-15, [self getRanNum:self.frame.size.height]);
+        directionDeg = [self getRanNum:180]+270;
+    }else if(sideNum ==8){
+        enemy.position = CGPointMake(self.frame.size.width*0.5, self.frame.size.height+10);
+        directionDeg = [self getRanNum:180]+180;
+        
+    }else{
+        enemy.position = CGPointMake(self.frame.size.width*0.5, -10);
+        directionDeg = (70+[self getRanNum:40]);
+        
+    }
     
     enemyDirection = degreesToVector(directionDeg);
     
-     [mainLayer addChild:enemy];
+    [mainLayer addChild:enemy];
     
     double rotAngle = (double)[self getRanNum:rotMax]/100;
     
-      rotate = [SKAction rotateByAngle:(M_PI)*rotAngle duration:1];
+    rotate = [SKAction rotateByAngle:(M_PI)*rotAngle duration:1];
     
-   [enemy runAction:[SKAction repeatActionForever:rotate]];
+    [enemy runAction:[SKAction repeatActionForever:rotate]];
     move = [SKAction moveBy:enemyDirection duration:((double)[self getRanNum:speedTime]/10000)+timeConstant];//0.005
-   [enemy runAction:[SKAction repeatActionForever:move]];
+    [enemy runAction:[SKAction repeatActionForever:move]];
     enemy.name = @"enemy";
-   
+    
     
 }//spawnEnemies-----------------------------------------------------------------------------------------------------------
 
@@ -903,13 +903,13 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     adDelayTime = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(triggerAd) userInfo:nil repeats:NO];
     
-
+    
     hasBegan = TRUE;
     [UIView animateWithDuration:2.5 animations:^{
         gameTitleLabel.alpha = 0;
     }];;
-   
-  
+    
+    
     
     tauntLabel.alpha = 0;
     
@@ -921,9 +921,9 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [self.view addSubview:mainTimerLabel];
     mainLayer.speed = 1;
     enemyTime = [NSTimer scheduledTimerWithTimeInterval:delayTime
-                        target:self selector:@selector(spawnEnemies)
-                        userInfo:nil
-                        repeats:YES];
+                                                 target:self selector:@selector(spawnEnemies)
+                                               userInfo:nil
+                                                repeats:YES];
     [enemyTime setTolerance:0.1];
     
     gunSpawnTimer = [NSTimer scheduledTimerWithTimeInterval:12 target:self selector:@selector(spawnGun) userInfo:nil repeats:YES];
@@ -935,7 +935,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     [pause setAlpha:0.8];
     [pause setBackgroundImage:[UIImage imageNamed:@"pauseButton"]
-                        forState:UIControlStateNormal];
+                     forState:UIControlStateNormal];
     
     [pause addTarget:self action:@selector(pauseGame) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pause];
@@ -976,31 +976,31 @@ static inline CGVector degreesToVector(CGFloat degrees){
             hero.position = CGPointMake(hero.position.x,self.frame.size.height*0.88);
         }
     }
-
+    
 }//updateTime-----------------------------------------------------------------------------------------------------------
 
 -(void)pauseGame{
     //[[NSNotificationCenter defaultCenter] postNotificationName:@"hideAd" object:nil];
-   if(score > highScore){
+    if(score > highScore){
         [self changeScore:score];
-  
+        
     }
     
     bulletNode.physicsBody.velocity = CGVectorMake(0, 0);
     gunTestingPoint.physicsBody.velocity = CGVectorMake(0, 0);
     
     if(!isMute){
-    if(genteMusicIsPlaying==FALSE){
-    [backgroundMusicIntense pause];
-    }
-    [backgroundMusicGentle play];
+        if(genteMusicIsPlaying==FALSE){
+            [backgroundMusicIntense pause];
+        }
+        [backgroundMusicGentle play];
     }
     isPaused = TRUE;
     restartBut.frame = CGRectMake(self.view.frame.size.width*0.51, self.view.frame.size.height*0.5, self.view.frame.size.width*0.44, 75);
     menuBut.frame = CGRectMake(self.view.frame.size.width*0.05, self.view.frame.size.height*0.5, self.view.frame.size.width*0.44-10, 75);
     [menuBut setBackgroundImage:[UIImage imageNamed:@"blue"] forState:UIControlStateNormal];
     pauseGame = TRUE;
-   [menuBut setAlpha:1];
+    [menuBut setAlpha:1];
     [pauseScreen setAlpha:0.75];
     [restartBut setBackgroundImage:[UIImage imageNamed:@"blue"] forState:UIControlStateNormal];
     [restartBut setExclusiveTouch:YES];
@@ -1023,17 +1023,17 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     
     [self.view addSubview:resume ];
-
+    
     [restartBut setAlpha:1];
-  
+    
 }//pauseGame-----------------------------------------------------------------------------------------------------------
 
 -(void)resumeGame{
     if(!isMute){
-    if(genteMusicIsPlaying==FALSE){
-        [backgroundMusicIntense play];
-        [backgroundMusicGentle pause];
-    }
+        if(genteMusicIsPlaying==FALSE){
+            [backgroundMusicIntense play];
+            [backgroundMusicGentle pause];
+        }
     }
     CGVector rotationVector;
     rotationVector = radiansToVector(gun.zRotation);
@@ -1060,7 +1060,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [restartBut setAlpha:0];
     mainTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(addToScore) userInfo:nil repeats:YES];
     gameTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-
+    
 }//resumeGame-----------------------------------------------------------------------------------------------------------
 
 -(void)stopTimer{
@@ -1070,19 +1070,19 @@ static inline CGVector degreesToVector(CGFloat degrees){
 }//stopeTimer-----------------------------------------------------------------------------------------------------------
 
 -(void) restartGame{
-   plus1lifeButton.transform =CGAffineTransformMakeScale(1,1);
+    plus1lifeButton.transform =CGAffineTransformMakeScale(1,1);
     canGetFirstLife = TRUE;
     lives = 0;
     angelPenguin.alpha = 0;
     gunIsOnScreen = FALSE;
     if(!isMute){
-    genteMusicIsPlaying = TRUE;
-    if(!genteMusicIsPlaying){
-        [backgroundMusicGentle play];
-        [backgroundMusicIntense stop];
+        genteMusicIsPlaying = TRUE;
+        if(!genteMusicIsPlaying){
+            [backgroundMusicGentle play];
+            [backgroundMusicIntense stop];
+        }
     }
-    }
-   // [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil]; //Sends message to viewcontroller to show ad.
+    // [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil]; //Sends message to viewcontroller to show ad.
     tauntLabel.text = [NSString stringWithFormat:@"Score above 200 to get your %@ back next round!", characterName];
     [tauntLabel sizeToFit];
     [tauntLabel setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.3)];
@@ -1137,7 +1137,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         tauntLabel.alpha = 1;
     
     
-   // NSLog(@"game restarted");
+    // NSLog(@"game restarted");
     [pauseScreen setAlpha:0];
     [removeAddsButton setAlpha:0];
     [shareButton setAlpha:0];
@@ -1176,7 +1176,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     timeConstant = initialTimeConstant;
     speedTime = initialspeedTime;
     delayTime=initialdelayTime;
-
+    
 }//restartGame-----------------------------------------------------------------------------------------------------------
 
 -(void)addToScore{
@@ -1190,9 +1190,9 @@ static inline CGVector degreesToVector(CGFloat degrees){
         if((hero.position.x-gun.position.x)>0){
             gun.zRotation = atan((hero.position.y-gun.position.y)/(hero.position.x-gun.position.x));
         }else{
-              gun.zRotation = M_PI+atan((hero.position.y-gun.position.y)/(hero.position.x-gun.position.x));
-            }
-       }
+            gun.zRotation = M_PI+atan((hero.position.y-gun.position.y)/(hero.position.x-gun.position.x));
+        }
+    }
     
     [mainLayer enumerateChildNodesWithName:@"enemy" usingBlock:^(SKNode *node, BOOL *stop) {
         if ((node.position.x > self.frame.size.width*2)||(node.position.x<-500) || (node.position.y > self.frame.size.height*2)||(node.position.y<-500)) {
@@ -1222,11 +1222,11 @@ static inline CGVector degreesToVector(CGFloat degrees){
     if(!(clockTime==0)&&(clockTime%50==0) &&(rotMax<maxRot) && (rotLab==TRUE)){
         rotLab = FALSE;
         rotMax+=50;
-       // NSLog(@"%d",rotMax);
+        // NSLog(@"%d",rotMax);
         [rotationLabel setAlpha:0.9];
         rotationLabelTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(fadeRotationLabel) userInfo:nil repeats:NO];
         delayForRotLab = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateForRotLab) userInfo:nil repeats:NO];
-       // set to 60
+        // set to 60
     }
     //speedTime
     if(!(clockTime==0)&&(clockTime%40==0) &&(speedTime>speedTimeMax) && (speedTimeBOOL==TRUE)){
@@ -1237,7 +1237,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         speedTimeBOOLTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updatespeedTimeBOOL) userInfo:nil repeats:NO];
         
         [speedTimeLabel setAlpha:0.9];
-    //set to 45
+        //set to 45
     }
     //timeConsant
     if(!(clockTime==0)&&(clockTime%80==0)&&(timeConstant>timeConstantMin) &&(timeConstantBool==TRUE)){
@@ -1246,20 +1246,20 @@ static inline CGVector degreesToVector(CGFloat degrees){
         //NSLog(@"%f",timeConstant);
         timeConstantBoolTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updatetimeConstantBool) userInfo:nil repeats:NO];
         //set to 100
-    
+        
     }
     
     //fish spawn function
     if(!(clockTime==0)&&(clockTime%100==0)&&(musicTransitionBool==TRUE)){
         if(!isMute){
-        genteMusicIsPlaying = FALSE;
-        [backgroundMusicGentle stop];
-        [backgroundMusicIntense play];
-        musicTransitionBool=FALSE;
+            genteMusicIsPlaying = FALSE;
+            [backgroundMusicGentle stop];
+            [backgroundMusicIntense play];
+            musicTransitionBool=FALSE;
         }
-            updateMusicTransitionBoolTimer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(updateMusicTranstionBool) userInfo:nil repeats:NO];
-    
-    
+        updateMusicTransitionBoolTimer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(updateMusicTranstionBool) userInfo:nil repeats:NO];
+        
+        
     }
     if(!(clockTime==0)&&(clockTime%14==0)&&(fishSpawnBool==TRUE)){
         fish.alpha = 1;
@@ -1274,7 +1274,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         [fish runAction: pulseFade withKey:@"pulseFade"];
         fishSpawnBoolTimer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(updatefishSpawnBool) userInfo:nil repeats:NO];
         
-      //14
+        //14
     }
     
     if(!(score==0)&&(score>3000)&&(canGetFirstLife==TRUE)){
@@ -1284,22 +1284,22 @@ static inline CGVector degreesToVector(CGFloat degrees){
         [self showExtraLife];
     }
     
-  //delayTime
-     if(!(clockTime==0)&&(clockTime%25==0)&&(delayTime>delayTimeMin) &&(delayTimeBool==TRUE)&&(collideBool==TRUE)&&(isPaused==FALSE)){
-         delayTimeBool = FALSE;
-         delayTime-=0.05;
-         delayTimeLabelTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(fadeDelayTimeLabel) userInfo:nil repeats:NO];
-         delayTimeBBoolTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDelaytimeBool) userInfo:nil repeats:NO];
-         [delayTimeLabel setAlpha:1];
-         [enemyTime invalidate];
-         enemyTime = [NSTimer scheduledTimerWithTimeInterval:delayTime
-                                                      target:self selector:@selector(spawnEnemies)
-                                                    userInfo:nil
-                                                     repeats:YES];
-         //NSLog(@"delay time: %lf", delayTime);
-         
-         //set to 30
-          }
+    //delayTime
+    if(!(clockTime==0)&&(clockTime%25==0)&&(delayTime>delayTimeMin) &&(delayTimeBool==TRUE)&&(collideBool==TRUE)&&(isPaused==FALSE)){
+        delayTimeBool = FALSE;
+        delayTime-=0.05;
+        delayTimeLabelTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(fadeDelayTimeLabel) userInfo:nil repeats:NO];
+        delayTimeBBoolTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateDelaytimeBool) userInfo:nil repeats:NO];
+        [delayTimeLabel setAlpha:1];
+        [enemyTime invalidate];
+        enemyTime = [NSTimer scheduledTimerWithTimeInterval:delayTime
+                                                     target:self selector:@selector(spawnEnemies)
+                                                   userInfo:nil
+                                                    repeats:YES];
+        //NSLog(@"delay time: %lf", delayTime);
+        
+        //set to 30
+    }
     //powerUp
     if(!(clockTime==0)&&(clockTime%30==0)&&(powerUpTimeBool==TRUE)){
         powerUpTimeBool=FALSE;
@@ -1309,9 +1309,9 @@ static inline CGVector degreesToVector(CGFloat degrees){
         powerUpBoolTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updatePowerUpBool) userInfo:nil repeats:NO];
         [powerUp runAction:pulseFade withKey:@"pulseFade"];
         //30
-
+        
     }
-
+    
     
     
     
@@ -1319,9 +1319,9 @@ static inline CGVector degreesToVector(CGFloat degrees){
     mainTimerLabel.text = [NSString stringWithFormat:@"Score: %d",score];
     [mainTimerLabel sizeToFit];
     
-   
     
-
+    
+    
 }//didFinishUpdate-----------------------------------------------------------------------------------------------------------
 
 -(void)addBomb: (CGPoint) position{
@@ -1339,10 +1339,10 @@ static inline CGVector degreesToVector(CGFloat degrees){
 
 -(void)addFeathers: (CGPoint) position{
     if (soundEnabled==TRUE) {
-           [poofSound play];
+        [poofSound play];
     }
     
- 
+    
     NSString *explosionPath2 = [[NSBundle mainBundle] pathForResource:@"FeatherAnimation1" ofType:@"sks"];
     //NSLog(@"added feathers");
     SKEmitterNode *explosion2 = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath2];
@@ -1351,7 +1351,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     SKAction *removeExposion2 = [SKAction sequence:@[[SKAction waitForDuration:10],[SKAction removeFromParent]]];
     [explosion2 runAction:removeExposion2];
-   
+    
 }//addFeathers-----------------------------------------------------------------------------------------------------------
 
 
@@ -1532,9 +1532,9 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     bloodSplatter = [SKSpriteNode spriteNodeWithImageNamed:@"bloodSplat"];
     bloodSplatter.position = position;
-   [mainLayer addChild:bloodSplatter];
+    [mainLayer addChild:bloodSplatter];
     [bloodSplatter runAction:fadeOut];
-
+    
 }
 
 -(void)addExplosion: (CGPoint) position{
@@ -1630,9 +1630,9 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     if(isSausage==FALSE){
         
-       
+        
         if([characterName isEqualToString:@"penguin"]){
-           [self addFeathers:deadPos];
+            [self addFeathers:deadPos];
         }else if([characterName isEqualToString:@"pig"]){
             [self addBacon:deadPos];
         }else if ([characterName isEqualToString:@"sheep"]){
@@ -1663,7 +1663,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     }
     [pause setAlpha:0];
     gameOverDelay = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(gameOver) userInfo:nil repeats:NO];
-       
+    
 }//didCollideWithMonster-----------------------------------------------------------------------------------------------------------
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
@@ -1689,7 +1689,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         
         //comment out the following line to make hero invinsible
         if(lives==0){
-        [self didCollideWithMonster];
+            [self didCollideWithMonster];
         }else{
             [self didCollideWithNonLethal];
         }
@@ -1713,10 +1713,10 @@ static inline CGVector degreesToVector(CGFloat degrees){
         [self didCollideWithPowerUp];
         powerUpdelayTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePowerUpdelayTimeBool) userInfo:nil repeats:NO];
         powerUpDelayTime = FALSE;
-
-    
+        
+        
     }
-    }//didBeginContact-----------------------------------------------------------------------------------------------------------
+}//didBeginContact-----------------------------------------------------------------------------------------------------------
 
 -(void)gameOver{
     //[[NSNotificationCenter defaultCenter] postNotificationName:@"hideAd" object:nil];
@@ -1727,15 +1727,15 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [restartBut setBackgroundImage:[UIImage imageNamed:@"turqois"] forState:UIControlStateNormal];
     if(genteMusicIsPlaying==FALSE){
         if(!isMute){
-        [backgroundMusicIntense stop];
-        [backgroundMusicGentle play];
-       // NSLog(@"intense music stopped");
+            [backgroundMusicIntense stop];
+            [backgroundMusicGentle play];
+            // NSLog(@"intense music stopped");
         }
     }
-        genteMusicIsPlaying = TRUE;
+    genteMusicIsPlaying = TRUE;
     angelPenguin.alpha = 0;
     lives = 0;
-
+    
     characterSelected.text = [NSString stringWithFormat:@"%@ selected", characterName];
     [characterSelected sizeToFit];
     [characterSelected setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.67)];
@@ -1743,7 +1743,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     collideBool = TRUE;
     
     [bestScore sizeToFit];
-   if(score > highScore){
+    if(score > highScore){
         [self changeScore:score];
         bestScore.textColor = [UIColor redColor];
     }
@@ -1751,7 +1751,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     
     //first if statement is iphone 6 plus size
     //else applies to everything else
-  
+    
     if ((int)[[UIScreen mainScreen] bounds].size.width > 700){
         restartBut.frame = CGRectMake(self.view.frame.size.width*0.05, self.view.frame.size.height*0.9-260, self.view.frame.size.width*0.9, 75);
         menuBut.frame = CGRectMake(self.view.frame.size.width*0.05, self.view.frame.size.height*0.9-80, self.view.frame.size.width*0.44, 75);
@@ -1767,7 +1767,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         menuBut.frame = CGRectMake(self.view.frame.size.width*0.05, self.view.frame.size.height*0.9-55, self.view.frame.size.width*0.44, 50);
         shareButton.frame= CGRectMake(self.view.frame.size.width*0.51, self.view.frame.size.height*0.9-55, self.view.frame.size.width*0.44, 50);
         removeAddsButton.frame = CGRectMake(self.view.frame.size.width*0.05, self.view.frame.size.height*0.9-120, self.view.frame.size.width*0.9, 55);
-   
+        
     }
     
     [pause setAlpha:0];
@@ -1790,7 +1790,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 
 -(void)didCollideWithFish{
     if (soundEnabled==TRUE) {
-            [popSound play];
+        [popSound play];
     }
     [fish removeActionForKey:@"pulseFade"];
     [mainLayer addChild:fishBone];
@@ -1808,7 +1808,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     }
     [plus100Button setAlpha:0.9];
     plus100ButtonFadeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(fadePlus100Button) userInfo:nil repeats:NO];
-
+    
 }//didCollideWithFish-----------------------------------------------------------------------------------------------------------
 
 
@@ -1833,15 +1833,15 @@ static inline CGVector degreesToVector(CGFloat degrees){
         [node removeFromParent];
     }];
     gunIsOnScreen = FALSE;
-  
-     //NSLog(@"did collide with powerup method was run!");
+    
+    //NSLog(@"did collide with powerup method was run!");
     
 }//didCollideWithPowerUp-----------------------------------------------------------------------------------------------------------
 
 
 -(IBAction)runShareGame:(id)sender{
-   
-    UIViewController *vc = self.view.window.rootViewController;    
+    
+    UIViewController *vc = self.view.window.rootViewController;
     
     if ([vc isKindOfClass:[GameViewController class]])
     {
@@ -1879,32 +1879,32 @@ static inline CGVector degreesToVector(CGFloat degrees){
     }
     
     if ([notification.name isEqualToString:@"pauseMusic"] && (soundEnabled==TRUE)) {
-       if(!isMute){
+        if(!isMute){
             [backgroundMusicIntense pause];
             [backgroundMusicGentle pause];
-       }
+        }
         
     }
     
     if([notification.name isEqualToString:@"playMusic"] && (soundEnabled == TRUE)){
         if(!isMute){
-        [backgroundMusicGentle play];
+            [backgroundMusicGentle play];
         }
-}
+    }
 }
 -(void)helpPage{
     helpScreenImage.alpha = 1;
     mainTimerLabel.alpha=0;
     bestScore.alpha=0;
     if(isPaused)
-    [resume setAlpha:0];
+        [resume setAlpha:0];
 }
 -(void)removeHelpPage{
     helpScreenImage.alpha = 0;
-     mainTimerLabel.alpha=1;
-   
+    mainTimerLabel.alpha=1;
+    
     if(!isPaused)
-    bestScore.alpha=1;
+        bestScore.alpha=1;
     if(isPaused)
         [resume setAlpha:1];
     
@@ -1914,9 +1914,9 @@ static inline CGVector degreesToVector(CGFloat degrees){
         isMute = TRUE;
         soundEnabled=FALSE;
         if(genteMusicIsPlaying){
-        [backgroundMusicGentle pause];
+            [backgroundMusicGentle pause];
         }else{
-        [backgroundMusicIntense pause];
+            [backgroundMusicIntense pause];
         }
     }else{
         isMute = FALSE;
@@ -1930,7 +1930,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
 }
 
 -(void)triggerAd{
-
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil]; //Sends message to viewcontroller to show ad.
 }
 
@@ -1946,10 +1946,10 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [goatButton setAlpha:1];
     [hippoButton setAlpha:1];
     [owlButton setAlpha:1];
-     [pigButton setAlpha:1];
+    [pigButton setAlpha:1];
     characterSelected.alpha = 1;
     characterTitle.alpha = 1;
-   
+    
     
     if ((int)[[UIScreen mainScreen] bounds].size.width == 480){
         [goatButton setFrame:CGRectMake(0, 0, 50, 52)];
@@ -1970,7 +1970,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     if(highScore >= 5500){
         hippoButton.enabled = TRUE;
         [hippoButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
-       // characterTitle.alpha = 0;
+        // characterTitle.alpha = 0;
     }
     if (highScore >= 5000){
         owlButton.enabled = TRUE;
@@ -1998,7 +1998,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     goatButton.alpha = 0;
     owlButton.alpha = 0;
     hippoButton.alpha = 0;
-     lessButton.alpha = 1;
+    lessButton.alpha = 1;
     goldPenguinButton.alpha = 1;
     giraffeButton.alpha = 1;
     beaverButton.alpha = 1;
@@ -2031,12 +2031,12 @@ static inline CGVector degreesToVector(CGFloat degrees){
     if(highScore>=8000){
         giraffeButton.enabled = TRUE;
         [giraffeButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
-
+        
     }
     if (highScore>=7500) {
         beaverButton.enabled = TRUE;
         [beaverButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
-
+        
     }
     if (highScore>=7000) {
         elephantButton.enabled = TRUE;
@@ -2097,7 +2097,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     elephantButton.alpha = 0;
     beeButton.alpha = 0;
     mooseButton.alpha = 0;
-
+    
     if ((int)[[UIScreen mainScreen] bounds].size.width == 480){
         [goatButton setFrame:CGRectMake(0, 0, 50, 52)];
         [goatButton setCenter:CGPointMake(self.view.frame.size.width*0.57142, self.view.frame.size.height*0.5)];
@@ -2135,7 +2135,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         pigButton.enabled = TRUE;
         [pigButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
     }
-
+    
 }
 
 -(void)selectSheep{
@@ -2177,7 +2177,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     characterSelected.text = [NSString stringWithFormat:@"%@ selected", characterName];
     [characterSelected sizeToFit];
     [characterSelected setCenter:CGPointMake(self.view.frame.size.width*0.5, self.view.frame.size.height*0.67)];
-
+    
     
 }
 
@@ -2243,7 +2243,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     gun.physicsBody.contactTestBitMask = heroCategory;
     gun.physicsBody.collisionBitMask = 0;
     gun.name = @"gun";
-   
+    
     int sideNum = [self getRanNum:10];
     int directionDeg;
     gunIsOnScreen = TRUE;
@@ -2265,7 +2265,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         if (directionDeg < 270) movingUp = TRUE;
         else movingUp = FALSE;
         
-       
+        
     }else if (sideNum ==7){
         gun.position = CGPointMake(-15, [self getRanNum:self.frame.size.height]);
         directionDeg = [self getRanNum:180]+270;
@@ -2301,19 +2301,19 @@ static inline CGVector degreesToVector(CGFloat degrees){
     //NSLog(@"%d",gunIsOnScreen);
     
     if ((gunIsOnScreen==TRUE) &&((gun.position.x > 0)&&(gun.position.x<self.frame.size.width)&&(gun.position.y>0)&&(gun.position.y<self.frame.size.height))) {
-    
-       
         
-    bulletNode = [SKSpriteNode spriteNodeWithImageNamed:@"bulletSmall"];
-    bulletNode.physicsBody = [SKPhysicsBody bodyWithTexture:bulletNode.texture size:bulletNode.texture.size];
-    bulletNode.physicsBody.dynamic=YES;
-    bulletNode.physicsBody.friction=NO;
-    bulletNode.physicsBody.allowsRotation=NO;
-    bulletNode.physicsBody.categoryBitMask = noCategory;
-    bulletNode.physicsBody.contactTestBitMask = heroCategory;
-    bulletNode.physicsBody.collisionBitMask = 0;
-    bulletNode.physicsBody.usesPreciseCollisionDetection = YES;
-    bulletNode.name = @"bullet";
+        
+        
+        bulletNode = [SKSpriteNode spriteNodeWithImageNamed:@"bulletSmall"];
+        bulletNode.physicsBody = [SKPhysicsBody bodyWithTexture:bulletNode.texture size:bulletNode.texture.size];
+        bulletNode.physicsBody.dynamic=YES;
+        bulletNode.physicsBody.friction=NO;
+        bulletNode.physicsBody.allowsRotation=NO;
+        bulletNode.physicsBody.categoryBitMask = noCategory;
+        bulletNode.physicsBody.contactTestBitMask = heroCategory;
+        bulletNode.physicsBody.collisionBitMask = 0;
+        bulletNode.physicsBody.usesPreciseCollisionDetection = YES;
+        bulletNode.name = @"bullet";
         
         
         gunTestingPoint = [SKSpriteNode spriteNodeWithImageNamed:@"bulletSmall"];
@@ -2328,7 +2328,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
         gunTestingPoint.name = @"gunTestingPoint";
         gunTestingPoint.position = CGPointMake(-55, -17);
         gunTestingPoint.alpha = 0;
-       
+        
         bulletNode.zRotation = gun.zRotation+M_PI;
         
         bulletNode.anchorPoint =CGPointMake(2.3, 1.5);
@@ -2338,10 +2338,10 @@ static inline CGVector degreesToVector(CGFloat degrees){
         //[self addGunshot:gunTestingPoint.position]; doesnt work for some reason, not important
         
         CGVector rotationVector;
-      
+        
         rotationVector = radiansToVector(gun.zRotation);
         
-       bulletNode.physicsBody.velocity = CGVectorMake(rotationVector.dx*270, rotationVector.dy*270);
+        bulletNode.physicsBody.velocity = CGVectorMake(rotationVector.dx*270, rotationVector.dy*270);
         gunTestingPoint.physicsBody.velocity = CGVectorMake(rotationVector.dx*270, rotationVector.dy*270);
         [mainLayer addChild:bulletNode];
         [bulletNode addChild:gunTestingPoint];
@@ -2356,11 +2356,11 @@ static inline CGVector degreesToVector(CGFloat degrees){
     [self removeExtraLife];
     collideBool = FALSE;
     updateCollideBoolTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateColideBool) userInfo:nil repeats:NO];
-     CGPoint deadPos = hero.position;
+    CGPoint deadPos = hero.position;
     
     
     if(isSausage==FALSE){
-       
+        
         
         
         if([characterName isEqualToString:@"penguin"]){
@@ -2393,7 +2393,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     }else{
         [self addbloodSplat:deadPos];
     }
-
+    
 }
 
 -(void)updateColideBool{
@@ -2406,7 +2406,7 @@ static inline CGVector degreesToVector(CGFloat degrees){
     if ((int)[[UIScreen mainScreen] bounds].size.width == 480){
         angelPenguinAction = [SKAction sequence:@[   [SKAction moveTo:hero.position duration:0],[SKAction fadeAlphaTo:0.95 duration:0.2],
                                                      [SKAction moveTo:CGPointMake(self.frame.size.width*0.25,self.frame.size.height*0.87) duration:3.5]]];
-
+        
     }else{
         angelPenguinAction = [SKAction sequence:@[   [SKAction moveTo:hero.position duration:0],[SKAction fadeAlphaTo:0.95 duration:0.2],
                                                      [SKAction moveTo:CGPointMake(self.frame.size.width*0.25,self.frame.size.height*0.8) duration:3.5]]];
